@@ -24,7 +24,7 @@ class AudioFile:
 
     def _download_audio(self):
         audio_bytes = requests.get(DOWNLOAD_BASE_URL.format(**{
-            'text': 'Witaj swiecie',
+            'text': self.text,
             'language': 'pl'
         })).iter_content()
 
