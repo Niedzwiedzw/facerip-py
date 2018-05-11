@@ -38,7 +38,7 @@ class AudioFile:
         os.system('ffmpeg -i {} {}'.format(self._filepath_mp3, self._filepath_wav))
 
     def play(self):
-        os.system('agplay {}'.format(self._filepath_wav))
+        os.system('aplay {}'.format(self._filepath_wav))
 
     def __enter__(self):
         self._download_audio()
