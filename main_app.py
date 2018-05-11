@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+from text_to_speech.text_to_speech import AudioFile
 app = Flask(__name__)
 
 
@@ -16,4 +17,7 @@ def read_something():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    if __name__ == '__main__':
+        text = input('co chcesz przeczytac? \n >> ')
+        with AudioFile(text) as f:
+            f.play()

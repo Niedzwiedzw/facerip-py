@@ -1,11 +1,15 @@
 import uuid
 import os
 import requests
-from ..settings import AUDIO_FILES_DIR
+from settings import AUDIO_FILES_DIR, BASE_DIR
 
-DOWNLOAD_BASE_URL = 'http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q={text}&tl={language}'
+DOWNLOAD_BASE_URL = 'http://translate.google.com/translate_tts?' \
+                    'ie=UTF-8&' \
+                    'client=tw-ob&' \
+                    'q={text}&' \
+                    'tl={language}'
 
-LANGUAGES = ['pl', 'en']
+# LANGUAGES = ['pl', 'en']
 
 
 class AudioFile:
@@ -45,7 +49,4 @@ def read(text: str):
     print("I am reading: {}".format(text))
 
 
-if __name__ == '__main__':
-    text = input('co chcesz przeczytac? \n >> ')
-    with AudioFile(text) as f:
-        f.play()
+
