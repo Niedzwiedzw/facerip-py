@@ -3,6 +3,9 @@ import os
 import requests
 from settings import AUDIO_FILES_DIR, BASE_DIR
 
+def touch(filepath: str):
+    open(filepath, 'w').close()
+
 DOWNLOAD_BASE_URL = 'http://translate.google.com/translate_tts?' \
                     'ie=UTF-8&' \
                     'client=tw-ob&' \
@@ -24,6 +27,8 @@ class AudioFile:
             'text': 'Witaj swiecie',
             'language': 'pl'
         })).iter_content()
+
+        touch(self._filepath_mp3)
 
         with open(self._filepath_mp3, 'ab') as f:
             for chunk in audio_bytes:
