@@ -8,11 +8,12 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello, World!'
 
+
 @app.route('/read', methods=['POST'])
 def read_something():
-    return str(f"""you are reading this in IVONA voice:
-{ request.data }
-"""
+    return str("""you are reading this in IVONA voice:
+{}
+""".format(request.data)
 )
 
 
