@@ -1,7 +1,7 @@
 import uuid
 import os
 import requests
-from settings import AUDIO_FILES_DIR
+from ..settings import AUDIO_FILES_DIR
 
 DOWNLOAD_BASE_URL = 'http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q={text}&tl={language}'
 
