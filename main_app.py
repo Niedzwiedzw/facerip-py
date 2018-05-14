@@ -4,21 +4,15 @@ from text_to_speech.text_to_speech import AudioFile
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
-
-
-@app.route('/read', methods=['POST'])
+@app.route('/read', methods=['get'])
 def read_something():
-    return str("""you are reading this in IVONA voice:
-{}
-""".format(request.data)
-)
+    text = request.args.get('text', default='', type=str)
+    with AudioFile(text) as f:
+        f.play()
+    return "czytam: `{}`".format(text) if text else 'uzycie: `/read?text=blablabla'
 
 
 if __name__ == '__main__':
     if __name__ == '__main__':
-        text = input('co chcesz przeczytac? \n >> ')
-        with AudioFile(text) as f:
-            f.play()
+        app.run(host='0.0.0.0')
+

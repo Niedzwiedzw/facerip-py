@@ -46,12 +46,9 @@ class AudioFile:
         return self
 
     def __exit__(self, *args):
-        os.remove(self._filepath_wav)
-        os.remove(self._filepath_mp3)
-
-
-def read(text: str):
-    print("I am reading: {}".format(text))
-
-
-
+        try:
+            os.remove(self._filepath_mp3)
+            os.remove(self._filepath_wav)
+        except FileNotFoundError as e:
+            print('unable to convert...')
+            print(e)
